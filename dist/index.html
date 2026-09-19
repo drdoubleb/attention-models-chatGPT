@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101d2c"><meta name="description" content="Build a tiny language model in your browser. An interactive, hands-on tutorial from tokens and attention to training and generation.">
+<title>Attention Lab — build a language model</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23101d2c'/%3E%3Cpath d='M7 24L16 7l9 17M11 18h10' fill='none' stroke='%2374edb6' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./style.css"><script type="module" src="./app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to lesson</a>
+<aside class="sidebar" id="sidebar">
+ <a class="brand" href="#lesson-0"><span class="brandmark">A<span>·</span></span><span>attention<span class="brand-light">lab</span></span></a>
+ <p class="sidebar-caption">FROM TEXT TO TRANSFORMER</p>
+ <nav id="navigation" aria-label="Tutorial lessons"></nav>
+ <div class="sidebar-bottom"><div class="model-state"><span id="state-dot" class="dot"></span><strong id="model-state">Initializing model</strong></div><p id="model-summary">A real neural network, on your device.</p><button class="text-button" data-go="9">Open training room <span aria-hidden="true">↗</span></button></div>
+</aside>
+<div class="workspace">
+ <header class="topbar"><button class="menu-button" id="menu-toggle" aria-label="Toggle lesson navigation" aria-expanded="false">☰</button><span class="breadcrumb">THE INTERACTIVE GUIDE <span>/</span> <b id="chapter-label">01 · The next-token game</b></span><div class="row"><button class="text-button" id="glossary-button">Glossary</button><button class="text-button" id="reference-button">Sources & code <span aria-hidden="true">↗</span></button></div></header>
+ <main id="main" tabindex="-1"><div id="lesson"></div></main>
+ <footer class="page-footer"><span>Small model. Real math. Yours to explore.</span><span>No API keys · No text sent to an AI service</span></footer>
+</div>
+<div id="notice" role="status" aria-live="polite"></div>
+<dialog id="glossary-dialog" aria-labelledby="glossary-title"><div class="dialog-head"><h2 id="glossary-title">A small vocabulary for big ideas</h2><button id="close-glossary" class="icon-button" aria-label="Close glossary">×</button></div>
+<dl class="glossary"><dt>Token</dt><dd>A piece of text represented by an integer ID. Here, one Unicode character.</dd><dt>Parameter / weight</dt><dd>A stored number adjusted during training. The model's learned behavior is encoded in these numbers.</dd><dt>Vector / dimension</dt><dd>A vector is an ordered list of numbers. Its dimension is the number of entries, not a physical direction. Our model uses 16, 24, or 32 entries per token.</dd><dt>Matrix / tensor</dt><dd>A matrix is a rectangular grid of numbers. A tensor generalizes this to any number of axes. Shapes tell you how many entries lie along each axis.</dd><dt>Activation</dt><dd>An intermediate number computed during a forward pass. Activations depend on the input; weights remain fixed until a training update.</dd><dt>Gradient</dt><dd>The local rate at which loss changes when a parameter changes. Backpropagation computes these rates throughout the model.</dd><dt>Batch / step / epoch</dt><dd>A batch is a set of training examples used for one update. This app averages four windows per optimizer step. An epoch usually means one pass over a training dataset; we count steps because windows are sampled with replacement.</dd><dt>Logit / softmax / loss</dt><dd>A logit is an unnormalized score. Softmax converts a set of scores into probabilities. Loss is a number measuring how poorly the prediction matched the target.</dd><dt>Attention head</dt><dd>One learned query/key/value subspace. Multiple heads make separate mixtures, then combine their outputs.</dd><dt>Inference / generation</dt><dd>Using learned weights to compute a prediction. Generation repeats inference while appending sampled tokens, without updating weights.</dd><dt>T · d · H · V</dt><dd>T = number of context positions; d = vector width; H = number of heads; V = vocabulary size. The attention formula also uses V for the value matrix; the surrounding context distinguishes it.</dd></dl></dialog>
+<dialog id="sources-dialog" aria-label="Sources and code"><div class="dialog-head"><h2>Keep exploring</h2><button id="close-sources" class="icon-button" aria-label="Close sources">×</button></div><p>This tutorial implements a GPT-style decoder in plain JavaScript. These are the original papers behind the ideas.</p><p><a href="https://github.com/drdoubleb/attention-models-chatGPT" target="_blank" rel="noopener noreferrer">Read the complete source on GitHub ↗</a></p><div id="references"></div></dialog>
+<noscript><p>This interactive tutorial needs JavaScript enabled. It trains the model locally in a browser worker.</p></noscript>
+</body></html>
